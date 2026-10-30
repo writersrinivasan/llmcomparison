@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+:root {
+  --background: #07071a;
+  --foreground: #eef0ff;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+/* Animated aurora backdrop */
+.aurora {
+  position: fixed;
+  inset: -20vmax;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(40vmax 40vmax at 15% 20%, rgba(236, 72, 153, 0.28), transparent 60%),
+    radial-gradient(35vmax 35vmax at 85% 15%, rgba(56, 189, 248, 0.25), transparent 60%),
+    radial-gradient(45vmax 45vmax at 70% 85%, rgba(168, 85, 247, 0.28), transparent 60%),
+    radial-gradient(30vmax 30vmax at 20% 85%, rgba(250, 204, 21, 0.16), transparent 60%);
+  filter: blur(20px);
+  animation: drift 24s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+  to {
+    transform: translate3d(3vmax, -2vmax, 0) rotate(6deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora {
+    animation: none;
+  }
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(14px);
+}
+
+.text-rainbow {
+  background: linear-gradient(90deg, #f472b6, #fb923c, #facc15, #4ade80, #38bdf8, #a78bfa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Markdown answers from the advisor */
+.prose-advisor h1,
+.prose-advisor h2,
+.prose-advisor h3 {
+  font-weight: 700;
+  margin: 1rem 0 0.5rem;
+}
+.prose-advisor p,
+.prose-advisor ul,
+.prose-advisor ol,
+.prose-advisor blockquote {
+  margin: 0.5rem 0;
+}
+.prose-advisor ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+.prose-advisor ol {
+  list-style: decimal;
+  padding-left: 1.25rem;
+}
+.prose-advisor strong {
+  color: #fff;
+}
+.prose-advisor blockquote {
+  border-left: 3px solid #a78bfa;
+  padding-left: 0.75rem;
+  color: #c7c9e8;
+}
+.prose-advisor code {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.3rem;
+  font-size: 0.85em;
+}
+.prose-advisor table {
+  display: block;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin: 0.75rem 0;
+  font-size: 0.875rem;
+}
+.prose-advisor th,
+.prose-advisor td {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.4rem 0.6rem;
+  text-align: left;
+}
+.prose-advisor th {
+  background: rgba(167, 139, 250, 0.15);
+}
+.prose-advisor a {
+  color: #7dd3fc;
+  text-decoration: underline;
+}
